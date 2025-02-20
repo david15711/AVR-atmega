@@ -1,0 +1,43 @@
+#include <mega128.h>
+#include <interrupt.h>
+
+unsigned char seg[10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x27, 0x7F, 0x6F };
+int cnt = 9, rgb = 0;
+
+interrupt [TIM1_COMPA] void tim1_compa(void){
+    OCR1A += 0x7a12;    //31250
+    cnt --;
+    if(cnt == -1) cnt = 9;
+    if(++rgb > 3) rgb = 0;
+}
+
+void Port_set(void){
+    DDRC |= 0xFF;
+    DDRA |= 0xFF;
+    
+    PORTA = 0;
+    PORTC |= 0x07;
+}
+
+
+void Interrupt_set(void){
+    TIMSK |= 0x10;  //OCR
+    TCCR1A = 0;     //normal mode
+    TCCR1B = 0x04;  // 16000000 / 256 Hz
+    TCNT1 = 0;
+    OCR1A = 0x7a11; //31250 -1 = 0x7a11
+    SREG |= 0x80;   
+}
+
+void main(void){
+    Port_set();
+    Interrupt_set();
+    
+    while(1){
+        PORTA = seg[cnt];
+        if(rgb == 0) PORTB = 0x20;
+        if(rgb == 1) PORTB = 0x40;
+        if(rgb == 2) PORTB = 0x80;
+        if(rgb == 3) PORTB = 0xE0;    
+    }
+}

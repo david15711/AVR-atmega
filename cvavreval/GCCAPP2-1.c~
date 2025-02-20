@@ -1,0 +1,112 @@
+/*******************************************************
+This program was created by the CodeWizardAVR V4.03 
+Automatic Program Generator
+� Copyright 1998-2024 Pavel Haiduc, HP InfoTech S.R.L.
+http://www.hpinfotech.ro
+
+Project : 
+Version : 
+Date    : 2024-10-15
+Author  : 
+Company : 
+Comments: 
+
+
+Chip type               : ATmega128
+Program type            : Application
+AVR Core Clock frequency: 16.000000 MHz
+Memory model            : Small
+External RAM size       : 0
+Data Stack size         : 1024
+*******************************************************/
+
+// I/O Registers definitions
+#include <mega128.h>
+#include <interrupt.h>
+#include <delay.h>
+
+/*
+void MyDelay_us(unsigned int count){
+    int i;
+    for(i = 0; i<count; i++){
+        ;
+        ;
+        ;
+        ;
+        ;
+        ;
+        ;
+        ;
+        ;
+        ;
+        ;
+        ;
+        ;
+    }
+}
+
+void MyDelay_ms(unsigned int count){
+    MyDelay_us(1000*count);
+}
+*/
+
+int i = 0;                              //signed, i-- = 0 == -1 not 65535
+unsigned char PE67 = 0;
+interrupt [EXT_INT4] void ext_int4(void){
+    PORTB = 0xFF;
+    delay_ms(500);
+    PORTB = 0x00;
+    delay_ms(500);
+    PORTB = 0xFF;
+    delay_ms(500);
+    EIFR = 0x10;
+}
+
+interrupt [EXT_INT6] void ext_int6(void){
+    PE67 = PINE >> 6;
+    if(PE67 == 3) i--;
+    else if(PE67 == 1) i++;
+    else if(PE67 == 0) i--;
+    else if(PE67 == 2) i++;
+    i = (i>7) ? 8 : (i<1) ? 0 : i;
+    delay_ms(5);
+}
+
+interrupt [EXT_INT7] void ext_int7(void){
+    PE67 = PINE >> 6;
+    if(PE67 == 3) i++;
+    else if(PE67 == 1) i--;
+    else if(PE67 == 0) i++;
+    else if(PE67 == 2) i--;
+    i = (i>7) ? 8 : (i<1) ? 0 : i;
+    delay_ms(5);    
+}
+
+void main(void)
+{
+    unsigned char seg[10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x27, 0x7F, 0x6F };
+    DDRA = 0xFF;            //7segment
+    DDRC = 0x08;            //7segment 0V 출력
+    DDRG = 0x03;            //button 입출력
+    DDRB = 0xFF;            //8 LED 출력
+    DDRE = 0x00;            // External interrupt 입력
+    PORTE = 0x10;
+    
+    EICRB = 0x54;
+    EIMSK = 0x50;
+    SREG |= 0x80;
+    while (1){
+        if( (PING&0x04)){
+            if(++i>8) i = 8;
+            PORTG = 0x01;
+            delay_ms(500);  
+        }                      
+        if ( (PING&0x08) ) {
+            if(--i<0) i = 0;
+            PORTG = 0x02;
+            delay_ms(500);
+        }
+        PORTA = seg[i];
+        PORTB = (1<<(i-1)) - 0;
+    }
+}

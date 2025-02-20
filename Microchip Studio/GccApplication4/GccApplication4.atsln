@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "GccApplication4", "GccApplication4\GccApplication4.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "GccApplication4-2", "GccApplication4-2\GccApplication4-2.cproj", "{9ADF5AE2-6F4E-4FCF-B8CB-B9CF92CC15A7}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "GccApplication4-3", "GccApplication4-3\GccApplication4-3.cproj", "{BECD381D-9062-4EA9-A445-3F6DCC006E96}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "GccApplication4-4(strain gauge)", "GccApplication4-4(strain gauge)\GccApplication4-4(strain gauge).cproj", "{6C375469-A9D2-4D21-8B2C-A4894AC6C2B6}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "GccApplication4-5 test", "GccApplication4-5 test\GccApplication4-5 test.cproj", "{FAE97681-6D4D-4B84-A30D-14B67DD6FB4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
+		{9ADF5AE2-6F4E-4FCF-B8CB-B9CF92CC15A7}.Debug|AVR.ActiveCfg = Debug|AVR
+		{9ADF5AE2-6F4E-4FCF-B8CB-B9CF92CC15A7}.Debug|AVR.Build.0 = Debug|AVR
+		{9ADF5AE2-6F4E-4FCF-B8CB-B9CF92CC15A7}.Release|AVR.ActiveCfg = Release|AVR
+		{9ADF5AE2-6F4E-4FCF-B8CB-B9CF92CC15A7}.Release|AVR.Build.0 = Release|AVR
+		{BECD381D-9062-4EA9-A445-3F6DCC006E96}.Debug|AVR.ActiveCfg = Debug|AVR
+		{BECD381D-9062-4EA9-A445-3F6DCC006E96}.Debug|AVR.Build.0 = Debug|AVR
+		{BECD381D-9062-4EA9-A445-3F6DCC006E96}.Release|AVR.ActiveCfg = Release|AVR
+		{BECD381D-9062-4EA9-A445-3F6DCC006E96}.Release|AVR.Build.0 = Release|AVR
+		{6C375469-A9D2-4D21-8B2C-A4894AC6C2B6}.Debug|AVR.ActiveCfg = Debug|AVR
+		{6C375469-A9D2-4D21-8B2C-A4894AC6C2B6}.Debug|AVR.Build.0 = Debug|AVR
+		{6C375469-A9D2-4D21-8B2C-A4894AC6C2B6}.Release|AVR.ActiveCfg = Release|AVR
+		{6C375469-A9D2-4D21-8B2C-A4894AC6C2B6}.Release|AVR.Build.0 = Release|AVR
+		{FAE97681-6D4D-4B84-A30D-14B67DD6FB4C}.Debug|AVR.ActiveCfg = Debug|AVR
+		{FAE97681-6D4D-4B84-A30D-14B67DD6FB4C}.Debug|AVR.Build.0 = Debug|AVR
+		{FAE97681-6D4D-4B84-A30D-14B67DD6FB4C}.Release|AVR.ActiveCfg = Release|AVR
+		{FAE97681-6D4D-4B84-A30D-14B67DD6FB4C}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
