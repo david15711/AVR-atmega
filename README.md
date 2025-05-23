@@ -5,7 +5,7 @@
 
 ***
 #### 폴더 및 과목 구분
-|Folder|Coure|
+|Folder|Course|
 |:--:|:--:|
 |Arduino mega|기계마이크로프로세서|
 |Microchip Studio|지능형센서응용|
